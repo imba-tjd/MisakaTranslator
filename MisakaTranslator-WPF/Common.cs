@@ -149,6 +149,7 @@ namespace MisakaTranslator_WPF
         /// </summary>
         /// <returns>如果已经是最新或获取更新失败，返回NULL，否则返回更新信息可直接显示</returns>
         public static List<string> CheckUpdate() {
+            return null;
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             string currentVersion = version.ToString();
 
