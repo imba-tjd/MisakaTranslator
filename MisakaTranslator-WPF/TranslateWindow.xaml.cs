@@ -28,10 +28,10 @@ namespace MisakaTranslator_WPF
     /// </summary>
     public partial class TranslateWindow
     {
-        public System.Windows.Threading.DispatcherTimer dtimer;//定时器 定时刷新位置
+        // public System.Windows.Threading.DispatcherTimer dtimer;//定时器 定时刷新位置
         //winAPI 设置窗口位置
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        private static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int Width, int Height, int flags);
+        // [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        // private static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int Width, int Height, int flags);
 
         private ArtificialTransHelper _artificialTransHelper;
 
@@ -58,7 +58,7 @@ namespace MisakaTranslator_WPF
 
         private TextSpeechHelper _textSpeechHelper;//TTS朗读对象
 
-        private IntPtr winHandle;//窗口句柄，用于设置活动窗口，以达到全屏状态下总在最前的目的
+        // private IntPtr winHandle;//窗口句柄，用于设置活动窗口，以达到全屏状态下总在最前的目的
 
         public TranslateWindow()
         {
@@ -474,10 +474,10 @@ namespace MisakaTranslator_WPF
                         }
                         else
                         {
-                            dtimer.Stop();
+                            //dtimer.Stop();
                             DictResWindow _dictResWindow = new DictResWindow(textBlock.Text,(string)textBlock.Tag,_textSpeechHelper);
                             _dictResWindow.ShowDialog();
-                            dtimer.Start();
+                            //dtimer.Start();
                         }
                     }
                     else
@@ -739,8 +739,8 @@ namespace MisakaTranslator_WPF
                 Common.textHooker = null;
             }
 
-            dtimer.Stop();
-            dtimer = null;
+            // dtimer.Stop();
+            // dtimer = null;
 
             // _mecabHelper.Dispose();
         }
@@ -748,7 +748,7 @@ namespace MisakaTranslator_WPF
 
         private void Settings_Item_Click(object sender, RoutedEventArgs e)
         {
-            dtimer.Stop();
+            //dtimer.Stop();
             TransWinSettingsWindow twsw = new TransWinSettingsWindow(this);
             twsw.Show();
         }
@@ -779,18 +779,18 @@ namespace MisakaTranslator_WPF
                 MinHeight = 300,
                 Title = Application.Current.Resources["TranslateWin_History_Title"].ToString()
             };
-            dtimer.Stop();
+            //dtimer.Stop();
             window.Topmost = true;
             window.ShowDialog();
-            dtimer.Start();
+            //dtimer.Start();
         }
 
         private void AddNoun_Item_Click(object sender, RoutedEventArgs e)
         {
-            dtimer.Stop();
+            //dtimer.Stop();
             AddOptWindow win = new AddOptWindow(_currentsrcText);
             win.ShowDialog();
-            dtimer.Start();
+            //dtimer.Start();
         }
 
         private void RenewOCR_Item_Click(object sender, RoutedEventArgs e)
@@ -862,28 +862,28 @@ namespace MisakaTranslator_WPF
 
         private void TransWin_Loaded(object sender, RoutedEventArgs e)
         {
-            winHandle = new WindowInteropHelper(this).Handle;//记录翻译窗口句柄
+            //winHandle = new WindowInteropHelper(this).Handle;//记录翻译窗口句柄
 
-            dtimer = new System.Windows.Threading.DispatcherTimer();
-            dtimer.Interval = TimeSpan.FromMilliseconds(10);
-            dtimer.Tick += dtimer_Tick;
-            dtimer.Start();
+            //dtimer = new System.Windows.Threading.DispatcherTimer();
+            //dtimer.Interval = TimeSpan.FromMilliseconds(10);
+            //dtimer.Tick += dtimer_Tick;
+            //dtimer.Start();
         }
 
-        void dtimer_Tick(object sender, EventArgs e)
-        {
-            if (this.WindowState != WindowState.Minimized) {
-                //定时刷新窗口到顶层
-                SetWindowPos(winHandle, -1, 0, 0, 0, 0, 1 | 2);
-            }
-        }
+        //void dtimer_Tick(object sender, EventArgs e)
+        //{
+        //    if (this.WindowState != WindowState.Minimized) {
+        //        //定时刷新窗口到顶层
+        //        SetWindowPos(winHandle, -1, 0, 0, 0, 0, 1 | 2);
+        //    }
+        //}
 
         private void ArtificialTransAdd_Item_Click(object sender, RoutedEventArgs e)
         {
-            dtimer.Stop();
+            //dtimer.Stop();
             ArtificialTransAddWindow win = new ArtificialTransAddWindow(_currentsrcText,FirstTransText.Text,SecondTransText.Text);
             win.ShowDialog();
-            dtimer.Start();
+            //dtimer.Start();
         }
     }
 }

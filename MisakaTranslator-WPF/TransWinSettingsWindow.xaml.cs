@@ -181,7 +181,7 @@ namespace MisakaTranslator_WPF
 
         private void TransWinSettingsWin_Closed(object sender, EventArgs e)
         {
-            translateWin.dtimer.Start();
+            //translateWin.dtimer.Start();
         }
     }
 }
