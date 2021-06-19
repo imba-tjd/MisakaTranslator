@@ -15,6 +15,7 @@ namespace MisakaTranslator_WPF
             //注册开始和退出事件
             this.Startup += App_Startup;
             this.Exit += App_Exit;
+            typeof(SystemFonts).GetField("_messageFontFamily", BindingFlags.Static | BindingFlags.NonPublic).SetValue(null, new System.Windows.Media.FontFamily("微软雅黑"));
         }
 
         private void App_Startup(object sender, StartupEventArgs e)
