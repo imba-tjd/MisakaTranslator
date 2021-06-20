@@ -345,7 +345,7 @@ namespace MisakaTranslator_WPF
             set;
         }
 
-        [Option(Alias = "ArtificialTrans.ATon", DefaultValue = true)]
+        [Option(Alias = "ArtificialTrans.ATon", DefaultValue = false)]
         bool ATon
         {
             get;
