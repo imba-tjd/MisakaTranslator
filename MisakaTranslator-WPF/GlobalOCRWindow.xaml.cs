@@ -33,29 +33,30 @@ namespace MisakaTranslator_WPF
         {
             OCREngine ocr;
             string res = null;
-            if (Common.appSettings.OCRsource == "TesseractOCR")
-            {
-                ocr = new TesseractOCR();
-                if (ocr.OCR_Init("", "") != false)
-                {
-                    ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
-                    res = ocr.OCRProcess(new System.Drawing.Bitmap(img));
-
-                    if (res != null)
-                    {
-                        sourceText.Text = res;
-                    }
-                    else
-                    {
-                        HandyControl.Controls.Growl.ErrorGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
-                    }
-                }
-                else
-                {
-                    HandyControl.Controls.Growl.ErrorGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
-                }
-            }
-            else if (Common.appSettings.OCRsource == "BaiduOCR")
+            // if (Common.appSettings.OCRsource == "TesseractOCR")
+            // {
+            //     ocr = new TesseractOCR();
+            //     if (ocr.OCR_Init("", "") != false)
+            //     {
+            //         ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
+            //         res = ocr.OCRProcess(new System.Drawing.Bitmap(img));
+            //
+            //         if (res != null)
+            //         {
+            //             sourceText.Text = res;
+            //         }
+            //         else
+            //         {
+            //             HandyControl.Controls.Growl.ErrorGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+            //         }
+            //     }
+            //     else
+            //     {
+            //         HandyControl.Controls.Growl.ErrorGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+            //     }
+            // }
+            // else if (Common.appSettings.OCRsource == "BaiduOCR")
+            if (Common.appSettings.OCRsource == "BaiduOCR")
             {
                 ocr = new BaiduGeneralOCR();
                 if (ocr.OCR_Init(Common.appSettings.BDOCR_APIKEY, Common.appSettings.BDOCR_SecretKey))
