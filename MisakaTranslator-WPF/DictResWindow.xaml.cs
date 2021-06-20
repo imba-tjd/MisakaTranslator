@@ -1,6 +1,6 @@
 ﻿using DictionaryHelperLibrary;
 using HandyControl.Controls;
-using MecabHelperLibrary;
+// using MecabHelperLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;

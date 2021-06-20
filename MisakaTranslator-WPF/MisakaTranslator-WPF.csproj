@@ -415,10 +415,10 @@
       <Project>{1ae9ea11-9fa0-4d30-b16e-ecf7183dec7a}</Project>
       <Name>KeyboardMouseHookLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MecabHelperLibrary\MecabHelperLibrary.csproj">
-      <Project>{82fde770-321e-4433-8e05-8803850f24db}</Project>
-      <Name>MecabHelperLibrary</Name>
-    </ProjectReference>
+    <!-- <ProjectReference Include="..\MecabHelperLibrary\MecabHelperLibrary.csproj"> -->
+      <!-- <Project>{82fde770-321e-4433-8e05-8803850f24db}</Project> -->
+      <!-- <Name>MecabHelperLibrary</Name> -->
+    <!-- </ProjectReference> -->
     <ProjectReference Include="..\OCRLibrary\OCRLibrary.csproj">
       <Project>{b66d98ec-fe39-45b4-9808-ac737c1a49fb}</Project>
       <Name>OCRLibrary</Name>

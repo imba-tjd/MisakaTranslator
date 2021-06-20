@@ -13,7 +13,7 @@ using DictionaryHelperLibrary;
 using FontAwesome.WPF;
 using HandyControl.Controls;
 using KeyboardMouseHookLibrary;
-using MecabHelperLibrary;
+// using MecabHelperLibrary;
 using TextHookLibrary;
 using TextRepairLibrary;
 using TranslatorLibrary;
@@ -35,7 +35,7 @@ namespace MisakaTranslator_WPF
 
         private ArtificialTransHelper _artificialTransHelper;
 
-        private MecabHelper _mecabHelper;
+        // private MecabHelper _mecabHelper;
         private BeforeTransHandle _beforeTransHandle;
         private AfterTransHandle _afterTransHandle;
         private ITranslator _translator1; //第一翻译源
@@ -64,7 +64,7 @@ namespace MisakaTranslator_WPF
         {
             InitializeComponent();
 
-            _isShowSource = true;
+            _isShowSource = false;
             _isLocked = false;
 
             _gameTextHistory = new Queue<string>();
@@ -74,7 +74,7 @@ namespace MisakaTranslator_WPF
             IsOCRingFlag = false;
 
 
-            _mecabHelper = new MecabHelper();
+            // _mecabHelper = new MecabHelper();
 
             _textSpeechHelper = new TextSpeechHelper();
             if (Common.appSettings.ttsVoice == "")
@@ -300,85 +300,85 @@ namespace MisakaTranslator_WPF
 
                                 _currentsrcText = source;
 
-                                if (_isShowSource)
-                                {
-                                    //3.分词
-                                    List<MecabWordInfo> mwi = _mecabHelper.SentenceHandle(source);
-                                    //分词后结果显示
-                                    for (int i = 0; i < mwi.Count; i++)
-                                    {
-                                        StackPanel stackPanel = new StackPanel();
-                                        stackPanel.Orientation = Orientation.Vertical;
-                                        stackPanel.Margin = new Thickness(10, 0, 0, 10);
-
-                                        TextBlock textBlock = new TextBlock();
-                                        if (!string.IsNullOrEmpty(SourceTextFont))
-                                        {
-                                            FontFamily fontFamily = new FontFamily(SourceTextFont);
-                                            textBlock.FontFamily = fontFamily;
-                                        }
-                                        textBlock.Text = mwi[i].Word;
-                                        textBlock.Tag = mwi[i].Kana;
-                                        textBlock.Margin = new Thickness(0, 0, 0, 0);
-                                        textBlock.FontSize = SourceTextFontSize;
-                                        textBlock.Background = Brushes.Transparent;
-                                        textBlock.MouseLeftButtonDown += DictArea_MouseLeftButtonDown;
-                                        //根据不同词性跟字体上色
-                                        switch (mwi[i].PartOfSpeech)
-                                        {
-                                            case "名詞":
-                                                textBlock.Foreground = Brushes.AliceBlue;
-                                                break;
-                                            case "助詞":
-                                                textBlock.Foreground = Brushes.LightGreen;
-                                                break;
-                                            case "動詞":
-                                                textBlock.Foreground = Brushes.Red;
-                                                break;
-                                            case "連体詞":
-                                                textBlock.Foreground = Brushes.Orange;
-                                                break;
-                                            default:
-                                                textBlock.Foreground = Brushes.White;
-                                                break;
-                                        }
-
-
-                                        TextBlock superScript = new TextBlock();//假名或注释等的上标标签
-                                        if (!string.IsNullOrEmpty(SourceTextFont))
-                                        {
-                                            FontFamily fontFamily = new FontFamily(SourceTextFont);
-                                            superScript.FontFamily = fontFamily;
-                                        }
-                                        superScript.Text = mwi[i].Kana;
-                                        superScript.Margin = new Thickness(0, 0, 0, 2);
-                                        superScript.HorizontalAlignment = HorizontalAlignment.Center;
-                                        if ((double)SourceTextFontSize - 6.5 > 0)
-                                        {
-                                            superScript.FontSize = (double)SourceTextFontSize - 6.5;
-                                        }
-                                        else
-                                        {
-                                            superScript.FontSize = 1;
-                                        }
-                                        superScript.Background = Brushes.Transparent;
-                                        superScript.Foreground = Brushes.White;
-                                        stackPanel.Children.Add(superScript);
-
-
-                                        //是否打开假名标注
-                                        if (Common.appSettings.TF_isKanaShow)
-                                        {
-                                            stackPanel.Children.Add(textBlock);
-                                            SourceTextPanel.Children.Add(stackPanel);
-                                        }
-                                        else
-                                        {
-                                            textBlock.Margin = new Thickness(10, 0, 0, 10);
-                                            SourceTextPanel.Children.Add(textBlock);
-                                        }
-                                    }
-                                }
+                                // if (_isShowSource)
+                                // {
+                                //     //3.分词
+                                //     List<MecabWordInfo> mwi = _mecabHelper.SentenceHandle(source);
+                                //     //分词后结果显示
+                                //     for (int i = 0; i < mwi.Count; i++)
+                                //     {
+                                //         StackPanel stackPanel = new StackPanel();
+                                //         stackPanel.Orientation = Orientation.Vertical;
+                                //         stackPanel.Margin = new Thickness(10, 0, 0, 10);
+                                //
+                                //         TextBlock textBlock = new TextBlock();
+                                //         if (!string.IsNullOrEmpty(SourceTextFont))
+                                //         {
+                                //             FontFamily fontFamily = new FontFamily(SourceTextFont);
+                                //             textBlock.FontFamily = fontFamily;
+                                //         }
+                                //         textBlock.Text = mwi[i].Word;
+                                //         textBlock.Tag = mwi[i].Kana;
+                                //         textBlock.Margin = new Thickness(0, 0, 0, 0);
+                                //         textBlock.FontSize = SourceTextFontSize;
+                                //         textBlock.Background = Brushes.Transparent;
+                                //         textBlock.MouseLeftButtonDown += DictArea_MouseLeftButtonDown;
+                                //         //根据不同词性跟字体上色
+                                //         switch (mwi[i].PartOfSpeech)
+                                //         {
+                                //             case "名詞":
+                                //                 textBlock.Foreground = Brushes.AliceBlue;
+                                //                 break;
+                                //             case "助詞":
+                                //                 textBlock.Foreground = Brushes.LightGreen;
+                                //                 break;
+                                //             case "動詞":
+                                //                 textBlock.Foreground = Brushes.Red;
+                                //                 break;
+                                //             case "連体詞":
+                                //                 textBlock.Foreground = Brushes.Orange;
+                                //                 break;
+                                //             default:
+                                //                 textBlock.Foreground = Brushes.White;
+                                //                 break;
+                                //         }
+                                //
+                                //
+                                //         TextBlock superScript = new TextBlock();//假名或注释等的上标标签
+                                //         if (!string.IsNullOrEmpty(SourceTextFont))
+                                //         {
+                                //             FontFamily fontFamily = new FontFamily(SourceTextFont);
+                                //             superScript.FontFamily = fontFamily;
+                                //         }
+                                //         superScript.Text = mwi[i].Kana;
+                                //         superScript.Margin = new Thickness(0, 0, 0, 2);
+                                //         superScript.HorizontalAlignment = HorizontalAlignment.Center;
+                                //         if ((double)SourceTextFontSize - 6.5 > 0)
+                                //         {
+                                //             superScript.FontSize = (double)SourceTextFontSize - 6.5;
+                                //         }
+                                //         else
+                                //         {
+                                //             superScript.FontSize = 1;
+                                //         }
+                                //         superScript.Background = Brushes.Transparent;
+                                //         superScript.Foreground = Brushes.White;
+                                //         stackPanel.Children.Add(superScript);
+                                //
+                                //
+                                //         //是否打开假名标注
+                                //         if (Common.appSettings.TF_isKanaShow)
+                                //         {
+                                //             stackPanel.Children.Add(textBlock);
+                                //             SourceTextPanel.Children.Add(stackPanel);
+                                //         }
+                                //         else
+                                //         {
+                                //             textBlock.Margin = new Thickness(10, 0, 0, 10);
+                                //             SourceTextPanel.Children.Add(textBlock);
+                                //         }
+                                //     }
+                                // }
 
                                 if (Convert.ToBoolean(Common.appSettings.EachRowTrans) == false)
                                 {
@@ -521,84 +521,84 @@ namespace MisakaTranslator_WPF
 
                     _currentsrcText = repairedText;
 
-                    if (_isShowSource)
-                    {
-                        //3.分词
-                        var mwi = _mecabHelper.SentenceHandle(repairedText);
-                        //分词后结果显示
-                        for (int i = 0; i < mwi.Count; i++)
-                        {
-                            StackPanel stackPanel = new StackPanel();
-                            stackPanel.Orientation = Orientation.Vertical;
-                            stackPanel.Margin = new Thickness(10, 0, 0, 10);
-
-                            TextBlock textBlock = new TextBlock();
-                            if (!string.IsNullOrEmpty(SourceTextFont))
-                            {
-                                FontFamily fontFamily = new FontFamily(SourceTextFont);
-                                textBlock.FontFamily = fontFamily;
-                            }
-                            textBlock.Text = mwi[i].Word;
-                            textBlock.Tag = mwi[i].Kana;
-                            textBlock.Margin = new Thickness(0, 0, 0, 0);
-                            textBlock.FontSize = SourceTextFontSize;
-                            textBlock.Background = Brushes.Transparent;
-                            textBlock.MouseLeftButtonDown += DictArea_MouseLeftButtonDown;
-                            //根据不同词性跟字体上色
-                            switch (mwi[i].PartOfSpeech)
-                            {
-                                case "名詞":
-                                    textBlock.Foreground = Brushes.AliceBlue;
-                                    break;
-                                case "助詞":
-                                    textBlock.Foreground = Brushes.LightGreen;
-                                    break;
-                                case "動詞":
-                                    textBlock.Foreground = Brushes.Red;
-                                    break;
-                                case "連体詞":
-                                    textBlock.Foreground = Brushes.Orange;
-                                    break;
-                                default:
-                                    textBlock.Foreground = Brushes.White;
-                                    break;
-                            }
-
-
-                            TextBlock superScript = new TextBlock();//假名或注释等的上标标签
-                            if (!string.IsNullOrEmpty(SourceTextFont))
-                            {
-                                FontFamily fontFamily = new FontFamily(SourceTextFont);
-                                superScript.FontFamily = fontFamily;
-                            }
-                            superScript.Text = mwi[i].Kana;
-                            superScript.Margin = new Thickness(0, 0, 0, 2);
-                            superScript.HorizontalAlignment = HorizontalAlignment.Center;
-                            if ((double)SourceTextFontSize - 6.5 > 0)
-                            {
-                                superScript.FontSize = (double)SourceTextFontSize - 6.5;
-                            }
-                            else {
-                                superScript.FontSize = 1;
-                            }
-                            superScript.Background = Brushes.Transparent;
-                            superScript.Foreground = Brushes.White;
-                            stackPanel.Children.Add(superScript);
-
-
-                            //是否打开假名标注
-                            if (Common.appSettings.TF_isKanaShow)
-                            {
-                                stackPanel.Children.Add(textBlock);
-                                SourceTextPanel.Children.Add(stackPanel);
-                            }
-                            else {
-                                textBlock.Margin = new Thickness(10, 0, 0, 10);
-                                SourceTextPanel.Children.Add(textBlock);
-                            }
-
-                        }
-                    }
+                    // if (_isShowSource)
+                    // {
+                    //     //3.分词
+                    //     var mwi = _mecabHelper.SentenceHandle(repairedText);
+                    //     //分词后结果显示
+                    //     for (int i = 0; i < mwi.Count; i++)
+                    //     {
+                    //         StackPanel stackPanel = new StackPanel();
+                    //         stackPanel.Orientation = Orientation.Vertical;
+                    //         stackPanel.Margin = new Thickness(10, 0, 0, 10);
+                    //
+                    //         TextBlock textBlock = new TextBlock();
+                    //         if (!string.IsNullOrEmpty(SourceTextFont))
+                    //         {
+                    //             FontFamily fontFamily = new FontFamily(SourceTextFont);
+                    //             textBlock.FontFamily = fontFamily;
+                    //         }
+                    //         textBlock.Text = mwi[i].Word;
+                    //         textBlock.Tag = mwi[i].Kana;
+                    //         textBlock.Margin = new Thickness(0, 0, 0, 0);
+                    //         textBlock.FontSize = SourceTextFontSize;
+                    //         textBlock.Background = Brushes.Transparent;
+                    //         textBlock.MouseLeftButtonDown += DictArea_MouseLeftButtonDown;
+                    //         //根据不同词性跟字体上色
+                    //         switch (mwi[i].PartOfSpeech)
+                    //         {
+                    //             case "名詞":
+                    //                 textBlock.Foreground = Brushes.AliceBlue;
+                    //                 break;
+                    //             case "助詞":
+                    //                 textBlock.Foreground = Brushes.LightGreen;
+                    //                 break;
+                    //             case "動詞":
+                    //                 textBlock.Foreground = Brushes.Red;
+                    //                 break;
+                    //             case "連体詞":
+                    //                 textBlock.Foreground = Brushes.Orange;
+                    //                 break;
+                    //             default:
+                    //                 textBlock.Foreground = Brushes.White;
+                    //                 break;
+                    //         }
+                    //
+                    //
+                    //         TextBlock superScript = new TextBlock();//假名或注释等的上标标签
+                    //         if (!string.IsNullOrEmpty(SourceTextFont))
+                    //         {
+                    //             FontFamily fontFamily = new FontFamily(SourceTextFont);
+                    //             superScript.FontFamily = fontFamily;
+                    //         }
+                    //         superScript.Text = mwi[i].Kana;
+                    //         superScript.Margin = new Thickness(0, 0, 0, 2);
+                    //         superScript.HorizontalAlignment = HorizontalAlignment.Center;
+                    //         if ((double)SourceTextFontSize - 6.5 > 0)
+                    //         {
+                    //             superScript.FontSize = (double)SourceTextFontSize - 6.5;
+                    //         }
+                    //         else {
+                    //             superScript.FontSize = 1;
+                    //         }
+                    //         superScript.Background = Brushes.Transparent;
+                    //         superScript.Foreground = Brushes.White;
+                    //         stackPanel.Children.Add(superScript);
+                    //
+                    //
+                    //         //是否打开假名标注
+                    //         if (Common.appSettings.TF_isKanaShow)
+                    //         {
+                    //             stackPanel.Children.Add(textBlock);
+                    //             SourceTextPanel.Children.Add(stackPanel);
+                    //         }
+                    //         else {
+                    //             textBlock.Margin = new Thickness(10, 0, 0, 10);
+                    //             SourceTextPanel.Children.Add(textBlock);
+                    //         }
+                    //
+                    //     }
+                    // }
 
 
                     //4.翻译前预处理
@@ -741,7 +741,7 @@ namespace MisakaTranslator_WPF
             dtimer.Stop();
             dtimer = null;
 
-            _mecabHelper.Dispose();
+            // _mecabHelper.Dispose();
         }
 
 
