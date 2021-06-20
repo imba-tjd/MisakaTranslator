@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Speech.Synthesis;
+// using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,10 +9,11 @@ namespace TTSHelperLibrary
 {
     public class TextSpeechHelper
     {
-        private SpeechSynthesizer synth;
+        private dynamic synth;
         
         public TextSpeechHelper() {
-            synth = new SpeechSynthesizer();
+            // synth = new SpeechSynthesizer();
+            throw new NotImplementedException();
         }
 
         ~TextSpeechHelper() {
@@ -24,9 +25,10 @@ namespace TTSHelperLibrary
         /// </summary>
         /// <returns>返回引擎信息的集合</returns>
         public List<string> GetAllTTSEngine() {
+            return null;
             List<string> res = new List<string>();
 
-            foreach (InstalledVoice iv in synth.GetInstalledVoices())
+            foreach (var iv in synth.GetInstalledVoices())
             {
                 res.Add(iv.VoiceInfo.Name);
             }

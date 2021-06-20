@@ -76,7 +76,8 @@ namespace MisakaTranslator_WPF
 
             // _mecabHelper = new MecabHelper();
 
-            _textSpeechHelper = new TextSpeechHelper();
+            // _textSpeechHelper = new TextSpeechHelper();
+            _textSpeechHelper = null;
             if (Common.appSettings.ttsVoice == "")
             {
                 Growl.InfoGlobal(Application.Current.Resources["TranslateWin_NoTTS_Hint"].ToString());
