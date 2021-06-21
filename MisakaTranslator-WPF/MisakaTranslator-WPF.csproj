@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>MisakaTranslator-WPF</AssemblyName>
+    <RootNamespace>MisakaTranslator</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="lib\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="logo.ico" />
+    <Resource Include="SettingsPages\AboutV2.jpg" />
+    <Resource Include="GuidePages\Completation.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ArtificialTransHelperLibrary\ArtificialTransHelperLibrary.csproj" />
+    <ProjectReference Include="..\DictionaryHelperLibrary\DictionaryHelperLibrary.csproj" />
+    <ProjectReference Include="..\KeyboardMouseHookLibrary\KeyboardMouseHookLibrary.csproj" />
+    <ProjectReference Include="..\OCRLibrary\OCRLibrary.csproj" />
+    <ProjectReference Include="..\SQLHelperLibrary\SQLHelperLibrary.csproj" />
+    <ProjectReference Include="..\TextHookLibrary\TextHookLibrary.csproj" />
+    <ProjectReference Include="..\TextRepairLibrary\TextRepairLibrary.csproj" />
+    <ProjectReference Include="..\TranslatorLibrary\TranslatorLibrary.csproj" />
+    <ProjectReference Include="..\TransOptimizationLibrary\TransOptimizationLibrary.csproj" />
+    <ProjectReference Include="..\TTSHelperLibrary\TTSHelperLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Config.Net.Json" Version="4.15.*" />
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="HandyControl" Version="3.1.*" />
+  </ItemGroup>
+</Project>
