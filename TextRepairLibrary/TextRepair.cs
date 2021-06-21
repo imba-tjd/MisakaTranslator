@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using IronPython.Hosting;
+// using IronPython.Hosting;
 
 namespace TextRepairLibrary
 {
@@ -27,24 +27,24 @@ namespace TextRepairLibrary
             { "用户自定义DLL(见说明)" , "RepairFun_Custom" }
         };
 
-        static TextRepair()
-        {
-            try
-            {
-                string[] handlers = Directory.GetFiles("textRepairPlugins");
-                foreach(var handler in handlers)
-                {
-                    string stem = Path.GetFileNameWithoutExtension(handler);
-                    string ext = Path.GetExtension(handler);
-                    if (ext != ".py" || stem == "__init__")
-                    {
-                        continue;
-                    }
-                    lstRepairFun.Add("用户自定义Python2脚本: " + stem, "#" + stem);
-                }
-            }
-            catch { }
-        }
+        // static TextRepair()
+        // {
+        //     try
+        //     {
+        //         string[] handlers = Directory.GetFiles("textRepairPlugins");
+        //         foreach(var handler in handlers)
+        //         {
+        //             string stem = Path.GetFileNameWithoutExtension(handler);
+        //             string ext = Path.GetExtension(handler);
+        //             if (ext != ".py" || stem == "__init__")
+        //             {
+        //                 continue;
+        //             }
+        //             lstRepairFun.Add("用户自定义Python2脚本: " + stem, "#" + stem);
+        //         }
+        //     }
+        //     catch { }
+        // }
 
 
         /// <summary>
@@ -54,10 +54,10 @@ namespace TextRepairLibrary
         /// <param name="sourceText">源文本</param>
         /// <returns></returns>
         public static string RepairFun_Auto(string functionName,string sourceText) {
-            if (functionName.StartsWith("#"))
-            {
-                return RepairFun_PythonScript(functionName.Substring(1), sourceText);
-            }
+            // if (functionName.StartsWith("#"))
+            // {
+            //     return RepairFun_PythonScript(functionName.Substring(1), sourceText);
+            // }
             Type t = typeof(TextRepair);//括号中的为所要使用的函数所在的类的类名
             MethodInfo mt = t.GetMethod(functionName);
             if (mt != null)
@@ -249,30 +249,30 @@ namespace TextRepairLibrary
         /// </summary>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static string RepairFun_PythonScript(string handler, string source)
-        {
-            if (source == "")
-            {
-                return "";
-            }
+        // public static string RepairFun_PythonScript(string handler, string source)
+        // {
+        //     if (source == "")
+        //     {
+        //         return "";
+        //     }
 
-            Microsoft.Scripting.Hosting.ScriptEngine pythonEngine = Python.CreateEngine();
-            Microsoft.Scripting.Hosting.ScriptSource pythonScript = pythonEngine.CreateScriptSourceFromString(
-                $"import textRepairPlugins.{handler} as customHandler\n" +
-                "ResultStr = customHandler.process(SourceStr)\n"
-                );
-            Microsoft.Scripting.Hosting.ScriptScope scope = pythonEngine.CreateScope();
-            scope.SetVariable("SourceStr", source);
+        //     Microsoft.Scripting.Hosting.ScriptEngine pythonEngine = Python.CreateEngine();
+        //     Microsoft.Scripting.Hosting.ScriptSource pythonScript = pythonEngine.CreateScriptSourceFromString(
+        //         $"import textRepairPlugins.{handler} as customHandler\n" +
+        //         "ResultStr = customHandler.process(SourceStr)\n"
+        //         );
+        //     Microsoft.Scripting.Hosting.ScriptScope scope = pythonEngine.CreateScope();
+        //     scope.SetVariable("SourceStr", source);
 
-            try
-            {
-                pythonScript.Execute(scope);
-            } 
-            catch (Exception e)
-            {
-                return e.Message;
-            }
-            return (string)scope.GetVariable("ResultStr");
-        }
+        //     try
+        //     {
+        //         pythonScript.Execute(scope);
+        //     } 
+        //     catch (Exception e)
+        //     {
+        //         return e.Message;
+        //     }
+        //     return (string)scope.GetVariable("ResultStr");
+        // }
     }
 }
