@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Text;
-using System.Web;
+using System.Net;
 
 namespace TranslatorLibrary
 {
@@ -42,7 +42,7 @@ namespace TranslatorLibrary
                 .Append("&nonce_str=").Append(salt)
                 .Append("&source=").Append(srcLang)
                 .Append("&target=").Append(desLang)
-                .Append("&text=").Append(HttpUtility.UrlEncode(q).ToUpper())
+                .Append("&text=").Append(WebUtility.UrlEncode(q).ToUpper())
                 .Append("&time_stamp=").Append(CommonFunction.GetTimeStamp());
             sb.Append("&sign=" + CommonFunction.EncryptString(sb.ToString() + "&app_key=" + appKey).ToUpper());
             string req = sb.ToString();

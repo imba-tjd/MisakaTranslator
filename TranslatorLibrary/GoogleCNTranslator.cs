@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace TranslatorLibrary
 {
@@ -41,7 +40,7 @@ namespace TranslatorLibrary
 
             var tk = ExecuteScript(fun, GetTkkJS);
 
-            string googleTransUrl = "https://translate.google.cn/translate_a/single?client=gtx&dt=t&sl=" + srcLang + "&tl=" + desLang + "&tk=" + tk + "&q=" + HttpUtility.UrlEncode(sourceText);
+            string googleTransUrl = "https://translate.google.cn/translate_a/single?client=gtx&dt=t&sl=" + srcLang + "&tl=" + desLang + "&tk=" + tk + "&q=" + WebUtility.UrlEncode(sourceText);
 
             var hc = CommonFunction.GetHttpClient();
 
