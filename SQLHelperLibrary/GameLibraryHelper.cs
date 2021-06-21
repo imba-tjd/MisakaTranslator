@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+// using System.Windows.Forms;
 
 namespace SQLHelperLibrary
 {
@@ -88,7 +88,7 @@ namespace SQLHelperLibrary
             var id = sqlHelper.ExecuteSql("CREATE TABLE game_library(gameid INTEGER PRIMARY KEY AUTOINCREMENT,gamename TEXT,gamefilepath TEXT,transmode INTEGER,src_lang TEXT,dst_lang TEXT,repair_func TEXT,repair_param_a TEXT,repair_param_b TEXT,hookcode TEXT,isMultiHook TEXT,isx64 TEXT,hookcode_custom TEXT);");
             if (id == -1)
             {
-                MessageBox.Show("新建游戏库时发生错误，错误代码:\n" + sqlHelper.GetLastError(), "数据库错误");
+                // MessageBox.Show("新建游戏库时发生错误，错误代码:\n" + sqlHelper.GetLastError(), "数据库错误");
                 return false;
             }
             else
@@ -121,7 +121,7 @@ namespace SQLHelperLibrary
 
             if (ls == null)
             {
-                MessageBox.Show($"数据库访问时发生错误，错误代码:\n{sqliteH.GetLastError()}", "数据库错误");
+                // MessageBox.Show($"数据库访问时发生错误，错误代码:\n{sqliteH.GetLastError()}", "数据库错误");
                 return -1;
             }
 
@@ -155,7 +155,7 @@ namespace SQLHelperLibrary
 
             if (ls == null)
             {
-                MessageBox.Show($"数据库访问时发生错误，错误代码:\n{sqlHelper.GetLastError()}", "数据库错误");
+                // MessageBox.Show($"数据库访问时发生错误，错误代码:\n{sqlHelper.GetLastError()}", "数据库错误");
                 return null;
             }
             
@@ -215,7 +215,7 @@ namespace SQLHelperLibrary
 
             if (ls == null)
             {
-                MessageBox.Show($"数据库访问时发生错误，错误代码:\n{sqlHelper.GetLastError()}", "数据库错误");
+                // MessageBox.Show($"数据库访问时发生错误，错误代码:\n{sqlHelper.GetLastError()}", "数据库错误");
                 return null;
             }
 
