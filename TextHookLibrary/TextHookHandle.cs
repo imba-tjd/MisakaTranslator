@@ -148,6 +148,7 @@ namespace TextHookLibrary {
             ProcessTextractor.StartInfo.FileName = "TextractorCLI.exe";
             ProcessTextractor.StartInfo.CreateNoWindow = true;
             ProcessTextractor.StartInfo.UseShellExecute = false;
+            ProcessTextractor.StartInfo.StandardInputEncoding = new UnicodeEncoding(false, false);
             ProcessTextractor.StartInfo.StandardOutputEncoding = Encoding.Unicode;
             ProcessTextractor.StartInfo.RedirectStandardInput = true;
             ProcessTextractor.StartInfo.RedirectStandardOutput = true;
