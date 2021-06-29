@@ -296,7 +296,7 @@ namespace MisakaTranslator_WPF
             set;
         }
 
-        [Option(Alias = "TranslateFormSettings.firstTransTextSize", DefaultValue = "15")]
+        [Option(Alias = "TranslateFormSettings.firstTransTextSize", DefaultValue = "18")]
         double TF_firstTransTextSize
         {
             get;
@@ -317,7 +317,7 @@ namespace MisakaTranslator_WPF
             set;
         }
 
-        [Option(Alias = "TranslateFormSettings.secondTransTextSize", DefaultValue = "15")]
+        [Option(Alias = "TranslateFormSettings.secondTransTextSize", DefaultValue = "18")]
         double TF_secondTransTextSize
         {
             get;
