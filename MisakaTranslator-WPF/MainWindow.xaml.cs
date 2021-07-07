@@ -23,7 +23,7 @@ namespace MisakaTranslator_WPF {
         public static MainWindow Instance { get; set; }
 
         public MainWindow() {
-            Instance = this;
+            // Instance = this;
             Common.mainWin = this;
 
             var settings = new ConfigurationBuilder<IAppSettings>().UseJsonFile("settings/settings.json").Build();
@@ -341,10 +341,10 @@ namespace MisakaTranslator_WPF {
         }
 
         public void CloseNotifyIcon() {
-            Instance.NotifyIconContextContent.Visibility = Visibility.Collapsed;
+            // Instance.NotifyIconContextContent.Visibility = Visibility.Collapsed;
         }
 
-        private void ButtonPush_OnClick(object sender, RoutedEventArgs e) => NotifyIconContextContent.CloseContextControl();
+        // private void ButtonPush_OnClick(object sender, RoutedEventArgs e) => NotifyIconContextContent.CloseContextControl();
 
         /// <summary>
         /// 切换语言通用事件
